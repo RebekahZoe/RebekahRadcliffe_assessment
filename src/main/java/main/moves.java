@@ -1,74 +1,61 @@
 package main;
 
 public class Moves {
-	private static int xCoord = PlayerCoordinates.getxCoordinate();
+	public static boolean notEnd = true;
+	private static int xCoord =PlayerCoordinates.getxCoordinate();
 	private static int yCoord = PlayerCoordinates.getyCoordinate();
 	
-	public static void playMove(String move) {
-		String moves = move.toLowerCase();
-		
-		
-		if(moves.equals("north")) {
+	public static void playMove(String move) throws WrongInputException {
+
+
+		if(move.equals("north")) {
 			if (yCoord == 10 ) {
 				System.out.println("Cannot move north anymore, you're at the edge of the world");
 				
-			} else if (yCoord==9) {
-			PlayerCoordinates.setyCoordinate(yCoord+1);
-			System.out.println(PlayerCoordinates.getyCoordinate());
-			System.out.println("The dial reads " + Distance.getDistance() + "m");
-			
-		}
-			else {
-				PlayerCoordinates.setyCoordinate(yCoord+2);
-				System.out.println(PlayerCoordinates.getyCoordinate());
-				System.out.println("The dial reads " + Distance.getDistance() + "m");
+			} else{
+				yCoord=yCoord+1;
+				System.out.println("The dial reads " + Distance.getDistance(xCoord,yCoord) + "m");
 			}
+
 	}
 		
-		if (moves.contentEquals("east")) {
+		else if (move.contentEquals("east")) {
 			if (xCoord == 10 ) {
 				System.out.println("Cannot move east anymore, you're at the edge of the world");
-			} else if (xCoord ==9) {
-			PlayerCoordinates.setyCoordinate(xCoord+1);
-			System.out.println(PlayerCoordinates.getxCoordinate());
-			System.out.println("The dial reads " + Distance.getDistance() + "m");
-		}
-			else {
-				PlayerCoordinates.setyCoordinate(xCoord+2);
-				System.out.println(PlayerCoordinates.getxCoordinate());
-				System.out.println("The dial reads " + Distance.getDistance() + "m");
+			} else {
+				xCoord=xCoord+1;
+				System.out.println("The dial reads " + Distance.getDistance(xCoord,yCoord) + "m");
 			}
 			
 		}
 		
-		if (moves.contentEquals("south")) {
+		else if (move.contentEquals("south")) {
 			if (yCoord == 0) {
 				System.out.println("Cannot move south anymore, you're at the edge of the world");
-			} else if ( yCoord == 1) {
-			PlayerCoordinates.setyCoordinate(yCoord-1);
-			System.out.println(PlayerCoordinates.getyCoordinate());
-			System.out.println("The dial reads " + Distance.getDistance() + "m");
-		}
-			else {
-				PlayerCoordinates.setyCoordinate(yCoord-2);
-				System.out.println(PlayerCoordinates.getyCoordinate());
-				System.out.println("The dial reads " + Distance.getDistance() + "m");
+			} else  {
+				yCoord=yCoord-1;
+				System.out.println("The dial reads " + Distance.getDistance(xCoord,yCoord) + "m");
 			}
 		}
-		if (moves.contentEquals("west")) {
+		else if (move.contentEquals("west")) {
 			if (xCoord == 0) {
 				System.out.println("Cannot move west anymore, you're at the edge of the world");
-			} else if (xCoord == 1) {
-			PlayerCoordinates.setxCoordinate(xCoord-1);
-			System.out.println(PlayerCoordinates.getxCoordinate());
-			System.out.println("The dial reads " + Distance.getDistance() + "m");
-		}
-			else {
-				PlayerCoordinates.setxCoordinate(xCoord-2);
-				System.out.println(PlayerCoordinates.getxCoordinate());
-				System.out.println("The dial reads " + Distance.getDistance() + "m");
+			} else{
+				xCoord=xCoord-1;
+				System.out.println("The dial reads " + Distance.getDistance(xCoord,yCoord) + "m");
 			}
 		}
+		else {
+			throw new WrongInputException();
+		}
+		
+		if (xCoord == TreasureCoordinates.getxCoordinate() && yCoord == TreasureCoordinates.getyCoordinate()) {
+			System.out.println("Congratulations you have found the treasure!");
+			notEnd = false;
+		} else {
+			System.out.println("Not quite there yet, keep going!");
+		}
+		
 	}
 
 }

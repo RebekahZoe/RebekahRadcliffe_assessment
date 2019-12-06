@@ -4,12 +4,14 @@ import java.text.DecimalFormat;
 
 public class Distance {
 	
-	private static int x = TreasureCoordinates.getxCoordinate() - PlayerCoordinates.getxCoordinate();
-	private static int y = TreasureCoordinates.getyCoordinate() - PlayerCoordinates.getyCoordinate();
-	static DecimalFormat df = new DecimalFormat("#.###");
+
 	
-	public static String getDistance() {
-		double distance = Math.hypot(x,y);
+	public static String getDistance(int x, int y) {
+		
+		int xCoord = TreasureCoordinates.getxCoordinate() - x;
+		int yCoord = TreasureCoordinates.getyCoordinate() - y;
+		DecimalFormat df = new DecimalFormat("#.###");
+		double distance = Math.hypot(xCoord,yCoord);
 		String distanceFormatted = df.format(distance);
 		return distanceFormatted;
 	}
