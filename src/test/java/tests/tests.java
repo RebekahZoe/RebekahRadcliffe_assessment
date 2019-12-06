@@ -6,11 +6,9 @@ import org.junit.Assert;
 
 import org.junit.Test;
 
+import main.Distance;
+
 public class tests {
 
-	@Test
-	public void test() {
-		assertEquals(true, false);
-	}
 
 }
