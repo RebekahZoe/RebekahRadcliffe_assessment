@@ -2,7 +2,7 @@ package main;
 
 import java.text.DecimalFormat;
 
-public class Distance {
+public class Distance { 
 	
 
 	
