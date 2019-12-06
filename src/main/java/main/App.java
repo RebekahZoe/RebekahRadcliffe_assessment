@@ -1,6 +1,5 @@
 package main;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class App {
@@ -13,7 +12,7 @@ public class App {
 		int startingX = PlayerCoordinates.getxCoordinate();
 		int startingY = PlayerCoordinates.getyCoordinate();
 		Scanner readInput = new Scanner(System.in);
-		System.out.println("Hello welcome to the game!");
+		System.out.println("Hello welcome to the game! You must find the treasure by using a compass, good luck!");
 		System.out.println("At your starting position the dial reads " + Distance.getDistance(startingX,startingY) + "m");
 		try {
 		while (Moves.notEnd) {
